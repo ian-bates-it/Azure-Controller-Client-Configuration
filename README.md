@@ -23,6 +23,15 @@ We will want our `Windows 2022 Server Datacenter: Azure Edition - x64 Gen2` to u
 - The Windows 2022 Server VM will serve as our Domain Controller.
 - It is imperative that the Windows 2022 Server always has the same IP address. 
 
+(Preparing AD Infra in Azure ~9:06)
+When we create a VM in Azure it automatically assigns in a dynamic private IP address. 
+
+We are going to tell our client machine (Windows 10 Pro) to use our controller (Windows 2022 Server) as the DNS Server. 
+So we need to manually configure the DNS settings for our client to use the static Windows Server's IP address. (10.0.0.5)
+If the private IP address for the Controller/Server changes, then our client can no longer use it as a DNS server. 
+
+
+
 ---
 <br />
 
@@ -77,7 +86,7 @@ We will want our `Windows 2022 Server Datacenter: Azure Edition - x64 Gen2` to u
 - Confirm the Private IP Address matches the private IP for your Windows Server. Mine was `10.0.0.5` as shown below.
 - Click the blue `Save` button at the bottom of the screen as shown below.
 
-<img src="https://github.com/user-attachments/assets/acef0270-3381-4c67-b464-c06206cc42e1" height="80%" width="80%" />
+<img src="https://github.com/user-attachments/assets/acef0270-3381-4c67-b464-c06206cc42e1" height="60%" width="60%" />
 
 
 
@@ -98,6 +107,76 @@ We will want our `Windows 2022 Server Datacenter: Azure Edition - x64 Gen2` to u
 
 ---
 <br />
+
+
+<h2>Disable the Firewall on Windows Server (For Testing Only)</h2>
+
+
+(Preparing AD Infra in Azure ~13:27)
+- For testing purposes only, we will disable the firewall on our Windows 2022 Server to make the communication to our client easier.
+- Of course, you would never do this in live production.
+
+
+<h3>Step 1: Remote into the Windows 2022 Server with Remote Desktop</h3>
+
+- To remote into our Windows Server, we need to obtain the server's public IP address. 
+
+
+In the Virtual Machine view in Azure, you can locate the public IP Address for your Windows 2022 Server as shown below: 
+
+<img src="https://github.com/user-attachments/assets/048e7772-61a7-418f-a1dd-fbd31fc87fe4" height="80%" width="80%" />
+
+
+---
+<br />
+
+<h3>Step 2: Remote into the Windows 2022 Server with Remote Desktop</h3>
+
+- Open the Remote Desktop application on your local computer
+- Run `mstsc.exe`
+- Enter the Window Server's public IP address into the computer field as shown below and press connect.
+
+
+<img src="https://github.com/user-attachments/assets/3c3cad80-e296-4e1e-9e78-85655f2026fb" height="40%" width="40%" />
+
+- Enter in the Windows 2022 Server administrator username and password that you created when making the server in the Azure setup.
+- Here I entered my Windows 2022 Server admin username (`Admin-DC`) and password and then pressed okay.
+
+<img src="https://github.com/user-attachments/assets/34cb962f-6fea-450f-8638-7de2477a7976" height="40%" width="40%" />
+
+
+
+---
+<br />
+
+<h3>Step 3: Open Windows Firewall on your Windows 2022 Server </h3>
+
+- Run `wf.msc` to open the Windows Firewall on your Windows 2022 Server as shown below. 
+
+<img src="https://github.com/user-attachments/assets/2475d2bd-b63c-49e9-a40a-f925915fcac3" height="40%" width="40%" />
+
+
+
+---
+<br />
+
+<h3>Step 4: Click `Windows Defender Firewall Properties` </h3>
+
+- As shown below, click on the `Windows Defender Firewall Properties`.
+
+
+<img src="https://github.com/user-attachments/assets/347e4363-f9cd-4683-98c4-9b7a7d38c442" height="80%" width="80%" />
+
+
+
+---
+<br />
+
+
+
+
+
+
 
 
 
