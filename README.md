@@ -9,7 +9,7 @@
 - We will need our Windows 2022 Server to use a static IP address which we will configure in Azure.
 - Then we will update the Windows 10 Pro VM to use the Windows 2022 Server's static private IP address as the Windows 10 Pro's DNS Server.
 
-- This is a continuation from <a href="https://github.com/ian-bates-it/Azure-Virtual-Machine-Setup"> Part 1 of this series where we created an Azure Windows 2022 Server and Windows 10 Pro virtual machine at this link.</a>
+- This is a continuation from <a href="https://github.com/ian-bates-it/Azure-Virtual-Machine-Setup"> Chapter 1 of this series where we created an Azure Windows 2022 Server and Windows 10 Pro virtual machine at this link.</a>
 
 
 
