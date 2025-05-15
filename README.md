@@ -7,7 +7,8 @@
 
 - After installing an Azure Windows 2022 Server to serve as the domain controller and an Azure Windows 10 Pro virtual machine to serve as the client, we need to make some configuration changes to both virtual machines.
 - We will need our Windows 2022 Server to use a static IP address which we will configure in Azure.
-- Then we will update the Windows 10 Pro VM to use the Windows 2022 Server's static private IP address as the Windows 10 Pro's DNS Server.
+- Then we will update the Windows 10 Pro VM network interface card (NIC) to use the Windows 2022 Server's static private IP address as the Windows 10 Pro's DNS Server.
+     - This is required to allow the Windows 10 Pro VM to join our Windows 2022 Server Domain Controller in the [Chapter 5 part of this series which you can see at this link.](https://github.com/ian-bates-it/Join-A-Client-To-A-Domain)
 
 - This is a continuation from <a href="https://github.com/ian-bates-it/Azure-Virtual-Machine-Setup"> Chapter 1 of this series where we created an Azure Windows 2022 Server and Windows 10 Pro virtual machine at this link.</a>
 
@@ -48,7 +49,10 @@ We will want our `Windows 2022 Server Datacenter: Azure Edition - x64 Gen2` to u
 - The Windows 2022 Server VM will serve as our Domain Controller.
 - It is imperative that the Windows 2022 Server always has the same IP address. 
 
+<!--
 (Preparing AD Infra in Azure ~9:06)
+-->
+
 When we create a VM in Azure it automatically assigns in a dynamic private IP address. 
 
 We are going to tell our client machine (Windows 10 Pro) to use our controller (Windows 2022 Server) as the DNS Server. 
