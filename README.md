@@ -1,21 +1,46 @@
-# Configuring the Azure Controller and Client Virtual Machines
-
-- After installing an Azure Windows 2022 Server to serve as the domain controller and an Azure Windows 10 Pro virtual machine to serve as the client, we need to make some configuration changes to both virtual machines.
-
-- To <a href="https://github.com/ian-bates-it/Azure-Virtual-Machine-Setup">install an Azure Windows 2022 Server and Windows 10 Pro virtual machine, see this tutorial at this link.</a>
-
----
-
-
 <p align="center">
-<img src="https://github.com/user-attachments/assets/b3ea61fe-a76a-4b78-8cf4-9f34db958509" height="30%" width="30%"/>
+<img src="https://github.com/user-attachments/assets/b3ea61fe-a76a-4b78-8cf4-9f34db958509" height="20%" width="20%"/>
 </p>
 
----
+
+# Chapter 2: Configuring the Azure Controller and Client Virtual Machines
+
+- After installing an Azure Windows 2022 Server to serve as the domain controller and an Azure Windows 10 Pro virtual machine to serve as the client, we need to make some configuration changes to both virtual machines.
+- We will need our Windows 2022 Server to use a static IP address which we will configure in Azure.
+- Then we will update the Windows 10 Pro VM to use the Windows 2022 Server's static private IP address as the Windows 10 Pro's DNS Server.
+
+- This is a continuation from <a href="https://github.com/ian-bates-it/Azure-Virtual-Machine-Setup"> Part 1 of this series where we created an Azure Windows 2022 Server and Windows 10 Pro virtual machine at this link.</a>
+
+
 
 ---
+
+
+<h2>Environments and Technologies Used</h2>
+
+- Microsoft Azure (Virtual Machines/Compute)
+- Remote Desktop
+
+
+<h2>Operating Systems Used </h2>
+
+- Windows Server 2022
+- Windows 10 (21H2)
+
+<h2>High-Level Deployment and Configuration Steps</h2>
+
+- Part 1: [Set the Windows 2022 Server's Private IP to Static](https://github.com/ian-bates-it/Azure-Controller-Client-Configuration?tab=readme-ov-file#set-the-windows-2022-server-virtual-machines-nic-private-ip-to-static)
+- Part 2: [Disable the Firewall on Windows Server (For Testing ONLY)](https://github.com/ian-bates-it/Azure-Controller-Client-Configuration?tab=readme-ov-file#disable-the-firewall-on-windows-server-for-testing-only)
+- Part 3: [Test the connectivity from Windows 10 Pro Client VM to WIndows 2022 Server VM](https://github.com/ian-bates-it/Azure-Controller-Client-Configuration?tab=readme-ov-file#test-connectivity-from-client-windows-10-pro-vm-to-controller-windows-2022-server-vm)
+- Part 4: [Update the Windows 10 Pro Client VM NIC Settings in Azure](https://github.com/ian-bates-it/Azure-Controller-Client-Configuration?tab=readme-ov-file#update-the-client-windows-10-pro-vms-nic-in-the-azure-settings)
+- Part 5: [Confirm the Windows 10 Pro DNS Settings with `ipconfig /all`](https://github.com/ian-bates-it/Azure-Controller-Client-Configuration?tab=readme-ov-file#confirm-the-windows-10-pro-dns-settings-with-ipconfig-all-)
+
+
 <br />
-<br />
+<br/>
+
+---
+<h1>Part 1:</h1>
 
 <h2>Set the Windows 2022 Server Virtual Machine's NIC Private IP to Static</h2>
 
@@ -105,14 +130,19 @@ If the private IP address for the Controller/Server changes, then our client can
 <img src="https://github.com/user-attachments/assets/d9196407-4fef-4743-93d8-b227d82f68be" height="80%" width="80%" />
 
 
----
+<br />
 <br />
 
+---
+
+<h1>Part 2:</h1>
 
 <h2>Disable the Firewall on Windows Server (For Testing Only)</h2>
 
-
+<!--
 (Preparing AD Infra in Azure ~13:27)
+-->
+
 - For testing purposes only, we will disable the firewall on our Windows 2022 Server to make the communication to our client easier.
 - Of course, you would never do this in live production.
 
@@ -181,10 +211,12 @@ In the Virtual Machine view in Azure, you can locate the public IP Address for y
 <img src="https://github.com/user-attachments/assets/44f77b9e-61b9-4eb2-bb15-d687fcbc468c" height="80%" width="80%" />
 
 
-
----
+<br />
 <br />
 
+---
+
+<h1>Part 3:</h1>
 
 <h2>Test Connectivity from Client (Windows 10 Pro VM) to Controller (Windows 2022 Server VM)</h2>
 
@@ -239,10 +271,12 @@ In the Virtual Machine view in Azure, you can locate the public IP Address for y
 
 
 
-
----
+<br />
 <br />
 
+---
+
+<h1>Part 4:</h1>
 
 <h2>Update the Client Windows 10 Pro VM's NIC in the Azure Settings</h2>
 
@@ -263,7 +297,7 @@ In the Azure portal, navigate to the Virtual Machine Window.
 
 - In the Windows 10 Pro Network Interface settings, select `DNS servers` from the left-hand menu as shown below.
 
-  <img src="https://github.com/user-attachments/assets/4b3a1ccc-e97e-4727-89a2-0d1294495ea2" height="80%" width="80%" />
+  <img src="https://github.com/user-attachments/assets/4b3a1ccc-e97e-4727-89a2-0d1294495ea2" height="100%" width="100%" />
   
 
 
@@ -303,9 +337,12 @@ In the Azure portal, navigate to the Virtual Machine Window.
   <img src="https://github.com/user-attachments/assets/7c328920-f12a-401c-a2be-b118c9523e92" height="100%" width="100%" />
 
 
+<br />
+<br />
 
 ---
-<br />
+
+<h1>Part 5:</h1>
 
 <h3>Confirm the Windows 10 Pro DNS Settings with `ipconfig /all` </h3>
 
