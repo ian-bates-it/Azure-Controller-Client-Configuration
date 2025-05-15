@@ -10,9 +10,6 @@
 - Then we will update the Windows 10 Pro VM network interface card (NIC) to use the Windows 2022 Server's static private IP address as the Windows 10 Pro's DNS Server.
      - This is required to allow the Windows 10 Pro VM to join our Windows 2022 Server Domain Controller in the [Chapter 5 part of this series which you can see at this link.](https://github.com/ian-bates-it/Join-A-Client-To-A-Domain)
 
-- This is a continuation from <a href="https://github.com/ian-bates-it/Azure-Virtual-Machine-Setup"> Chapter 1 of this series where we created an Azure Windows 2022 Server and Windows 10 Pro virtual machine at this link.</a>
-
-
 
 ---
 
@@ -28,13 +25,19 @@
 - Windows Server 2022
 - Windows 10 Pro (21H2)
 
-<h2>High-Level Deployment and Configuration Steps</h2>
+<h2>High-Level Configuration Steps</h2>
 
 - Part 1: [Set the Windows 2022 Server's Private IP to Static](https://github.com/ian-bates-it/Azure-Controller-Client-Configuration?tab=readme-ov-file#set-the-windows-2022-server-virtual-machines-nic-private-ip-to-static)
 - Part 2: [Disable the Firewall on Windows Server (For Testing ONLY)](https://github.com/ian-bates-it/Azure-Controller-Client-Configuration?tab=readme-ov-file#disable-the-firewall-on-windows-server-for-testing-only)
 - Part 3: [Test the connectivity from Windows 10 Pro Client VM to WIndows 2022 Server VM](https://github.com/ian-bates-it/Azure-Controller-Client-Configuration?tab=readme-ov-file#test-connectivity-from-client-windows-10-pro-vm-to-controller-windows-2022-server-vm)
 - Part 4: [Update the Windows 10 Pro Client VM NIC Settings in Azure](https://github.com/ian-bates-it/Azure-Controller-Client-Configuration?tab=readme-ov-file#update-the-client-windows-10-pro-vms-nic-in-the-azure-settings)
 - Part 5: [Confirm the Windows 10 Pro DNS Settings with `ipconfig /all`](https://github.com/ian-bates-it/Azure-Controller-Client-Configuration?tab=readme-ov-file#confirm-the-windows-10-pro-dns-settings-with-ipconfig-all-)
+
+
+
+<h2>Prerequisites</h2>
+
+1. Complete [Chapter 1 of this series, Creating a Windows 10 Pro and Windows 2022 Server Virtual Machines in Azure.](https://github.com/ian-bates-it/Azure-Virtual-Machine-Setup)
 
 
 <br />
