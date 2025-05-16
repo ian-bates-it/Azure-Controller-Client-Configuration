@@ -22,7 +22,7 @@
 
 <h2>Operating Systems Used </h2>
 
-- Windows Server 2022
+- Windows Server 2022 Datacenter Azure edition
 - Windows 10 Pro (21H2)
 
 <h2>High-Level Configuration Steps</h2>
